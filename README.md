@@ -1,0 +1,4 @@
+freekore
+========
+
+Freekore PHP Framework
