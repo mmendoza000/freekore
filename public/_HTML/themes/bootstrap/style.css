@@ -1,0 +1,121 @@
+html{color:#000;background:#fff;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:inherit;font-weight:inherit;}del,ins{text-decoration:none;}li{list-style:none;}caption,th{text-align:left;}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}input,button,textarea,select{*font-size:100%;}
+body{color:#444;*font-size:small;*font:x-small;}
+a{color: #336699; text-decoration:none;}
+a:hover {text-decoration: underline;color: #000033;}
+#header {
+  background-color:#fff;
+}
+#header-content {
+    margin:auto;
+    width:1000px;
+}
+#content {
+	margin:auto;
+	width:1000px;
+	background: #fff; 
+	min-height: 450px;	
+}
+#content-main {
+	background: #fff; 
+}
+#footer {
+    margin:auto;
+	color:#333;
+	min-height:100px;	
+}
+#footer-content{
+	text-align:left; margin:auto;
+	width:1000px;
+}
+/*other styles*/
+.small-scr{
+  border:3px solid #ccc;
+  width:320px;
+  height:220px; margin:2px;float:left;
+}
+.small-scr img{
+  width:318px;
+}
+.small-scr .dsc{ text-align:center;}
+
+/*messages*/
+.message{
+color:#666;
+  border:1px solid #ccc; padding:10px; margin:5px;
+ moz-border-radius: 4px;
+ -webkit-border-radius: 4px;
+ border-radius: 4px;
+ -moz-box-shadow: 1px 0px 2px #ccc;
+-webkit-box-shadow: 1px 0px 2px #ccc;
+box-shadow: 1px 0px 2px #ccc;
+}
+.message.ok{
+  border:1px solid #B8E78B; border-top:1px solid #ECF7CF;
+  background:url('img/notif-1.png') bottom repeat-x; color:#4F4F4F;
+}
+.message.ok b{ color:#47860F;}
+.message.warning{
+  border:1px solid #EDE336; border-top:1px solid #FEFCCC;
+  background:#DFF4A7 url('img/notif-2.png') bottom repeat-x; color:#4F4F4F;
+}
+.message.warning b{ color:#E4AC00;}
+.message.error{
+  border:1px solid #C97877; border-top:1px solid #F7D1D0;
+  background:#DFF4A7 url('img/notif-3.png') bottom repeat-x; color:#404040;
+}
+.message.error b{ color:#B21619;}
+.message.info {
+border: 1px solid #247188;
+border-top: 1px solid #3D99B4;
+background: #007BCC url('img/notif-4.png') bottom repeat-x;
+color: rgb(250, 247, 247);
+}
+.message.info b{ color:rgb(134, 187, 247);}
+
+
+.uiTip{ 
+background: #fff;
+border: 1px solid #8C8C8C;
+border: 1px solid rgba(0, 0, 0, .45);
+border-bottom: 1px solid #666;
+-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
+position: absolute;
+border-image: initial;
+padding:5px;
+display:inline-block;
+}
+.uiTip .uiArrow.atBottom{
+margin: -11px 0px 0px 5px;
+background-position: -29px -72px;
+bottom: -9px;
+height: 9px;
+width: 16px;
+}
+.uiTip .uiArrow.atRight{
+margin: -11px 0px 0px 5px;
+background-position: -3px -74px;
+right: -9px;
+top: 18px;
+height: 16px;
+width: 9px;
+}
+.uiTip .uiArrow.atTop{
+margin: -11px 0px 0px 5px;
+background-position: -29px -82px;
+top: 2px;
+height: 9px;
+width: 16px;
+}
+.uiTip .uiArrow.atLeft{
+margin: 3px 0px 0px -14px;
+background-position: -13px -74px;
+top: 2px;
+height: 16px;
+width: 9px;
+}
+.uiTip .uiArrow{
+background-image: url('img/icons.png');
+background-repeat: no-repeat;
+position: absolute;
+overflow: hidden;
+}

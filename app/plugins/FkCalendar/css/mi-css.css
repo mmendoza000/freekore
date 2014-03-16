@@ -1,0 +1,88 @@
+.caltb {
+	background: #E3EFFF;
+	border: 1px solid #6593CF;
+	overflow:hidden;
+}
+
+.agenda-view { 
+	padding:3px;
+	background:#fff;
+}
+.agenda-view .evnt{ 
+	background:#fff;padding:4px; margin:1px;
+	border:none; 
+	border-top:1px #eee solid;
+}
+.agenda-view .evnt.today{
+   background:#FFFF66;
+}
+
+.day-view .dy-head {
+	width: 100%;
+	margin-left:50px;
+	border: 1px solid #6593CF;
+	background:#CBDAEE;
+}
+.day-view .dy-head .new-agend{
+	background:#A5BFE1;
+}
+
+.day-view .dy-body {
+	height: 400px;
+	overflow: auto;
+	background: #fff;
+	
+}
+
+.dy-body .col-1 {
+	width: 50px;
+	float: left;
+}
+
+.dy-body .col-1 .hr {
+	height: 40px;
+	background: #E3EFFF;
+	border-bottom: 1px solid #6593CF;
+	color: #6593CF;
+}
+
+.dy-body .col-1 .hr1 {
+	height: 20px;
+}
+
+.dy-body .col-1 .hr2 {
+	height: 20px;
+	border-top: 1px solid #D5E1F1;
+}
+
+.dy-body .col-2 {
+	width: 98%;
+	float: left;
+	background: #fff; border:none;
+}
+
+.dy-body .col-2 .hr {
+	height: 40px;
+	background: #fff;
+	border-bottom: 1px solid #6593CF;
+	color: #6593CF;
+}
+
+.dy-body .col-2 .hr1 {
+	height: 20px;
+}
+
+.dy-body .col-2 .hr2 {
+	height: 20px;
+	border-top: 1px dotted #D5E1F1;
+}
+
+.day-view .dy-head input[type=text] {
+	width: 100%;
+	
+}
+.evnt{ background:#9CD2A0; border:1px solid #6CBC71;
+ color:#333; font-size:11px;
+ position:relative; margin-top:-1px;
+}
+.dropper{min-height:10px; border:1px solid #fff;}
