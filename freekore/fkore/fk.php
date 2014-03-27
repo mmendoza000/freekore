@@ -14,7 +14,7 @@ function fk_theme(){
 }
 
 function fk_theme_url(){
-	$theme_url = HTTP.'/_HTML/themes/'.fk_theme();
+	$theme_url = HTTP.'_HTML/themes/'.fk_theme();
 	return $theme_url;
 
 }

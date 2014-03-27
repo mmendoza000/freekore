@@ -37,6 +37,13 @@ class db_oracle implements db_interface{
 	private $query_is_assoc = false;
 	public static $is_connected = false;
 
+	private $arr_handled_errors = array(
+			'1062'=>'ER_DUP_ENTRY',
+			'1451'=>'ER_ROW_IS_REFERENCED_2',
+			'1452'=>'ER_NO_REFERENCED_ROW_2');
+
+	public $error_code = '';
+
 	// SQL STRING VARS
 	private $sql_select = '*';
 	private $sql_select_distinct = '';
@@ -97,7 +104,7 @@ class db_oracle implements db_interface{
 	 * */
 	public function query($query){
 
-		$this->sql_query = $query;
+		$this->sql_query = $query ;
 
 		// Prepare the statement
 		$this->resource = oci_parse(self::$conn, $query);
@@ -108,15 +115,42 @@ class db_oracle implements db_interface{
 
 		// Perform the logic of the query
 		$ok = oci_execute($this->resource);
-		if (!$ok) {
-			$e = oci_error($stid);
-			echo '<B>QUERY</B>:'.$query;
+		if($ok){
+			return TRUE;
+		}else{
+
 			//trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
+			// is hanled error
 			
-			
+			$o_err = oci_error($this->resource);
+						
+			$is_handed = false;
+
+			if(array_key_exists($o_err['code'], $this->arr_handled_errors)){
+				$is_handed = true;
+			}
+
+			if($is_handed==true){
+				$this->error_code = $this->arr_handled_errors[$o_err['code']];
+				return FALSE;
+			}else{
+				// if uknown error
+				try{
+					throw new FkException("Oracle Error");
+				}catch(FkException $e){
+					$e->description='Oracle Respondi&oacute;:'. $o_err['message'].'</b>';
+					$e->solution='Verifique la consulta';
+					$e->solution_code= fk_str_format($query,'html');
+					$e->error_code=$o_err['code'];
+					$e->show('code_help');
+				}
+				return FALSE;
+			}
 		}
+		
 			
 		return $this->resource;
+
 	}
 	/**
 	 *@package db_oracle
@@ -238,7 +272,7 @@ WHERE table_name='".strtoupper($table)."' ";
 					}
 
 				}
-				$fields_list .= ' `'.$f_name.'` ,';
+				$fields_list .= ' '.$f_name.' ,';
 
 			}
 
@@ -250,7 +284,7 @@ WHERE table_name='".strtoupper($table)."' ";
 		$primary_fields = '';
 		$primary_vals = '';
 		if($id_field_name!=NULL){
-			$primary_fields = '`'.$id_field_name.'`,';
+			$primary_fields = ''.$id_field_name.',';
 			$primary_vals = 'NULL,';
 		}
 
@@ -303,21 +337,21 @@ WHERE table_name='".strtoupper($table)."' ";
 				if($FieldType=='password'){
 					// Exepcion password
 					if(trim($f_val)!=''){
-						$set_fields .= " `".$f_name."` = '".md5($f_val)."',";
+						$set_fields .= " ".$f_name." = '".md5($f_val)."',";
 					}
 				}elseif($FieldType=='date'){
 					// Exepcion date
 					if($f_val===NULL || trim($f_val)==''){
-						$set_fields .= " `".$f_name."` = NULL ,";
+						$set_fields .= " ".$f_name." = NULL ,";
 					}else{
-						$set_fields .= " `".$f_name."` = STR_TO_DATE('".$this->escape_string($f_val)."', '".DB_DATE_FORMAT."'),";
+						$set_fields .= " ".$f_name." = STR_TO_DATE('".$this->escape_string($f_val)."', '".DB_DATE_FORMAT."'),";
 					}
 
 				}else{
 					if($f_val===NULL){
-						$set_fields .= " `".$f_name."` = NULL ,";
+						$set_fields .= " ".$f_name." = NULL ,";
 					}else{
-						$set_fields .= " `".$f_name."` = '".$this->escape_string(stripslashes($f_val))."',";
+						$set_fields .= " ".$f_name." = '".$this->escape_string(stripslashes($f_val))."',";
 					}
 
 				}
@@ -331,7 +365,7 @@ WHERE table_name='".strtoupper($table)."' ";
 		if($WHERE!=''){
 
 			$SET = ' SET '.$set_fields;
-			$sql = 'UPDATE '.$table.' '.$SET.' '.$WHERE.'  LIMIT 1';
+			echo $sql = 'UPDATE '.$table.' '.$SET.' '.$WHERE.' ';
 
 			$rs = $this->query($sql);
 

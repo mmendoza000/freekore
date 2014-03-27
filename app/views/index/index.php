@@ -48,11 +48,10 @@
 		<p><b>Documentaci&oacute;n:</b> Para comenzar con freekore puedes leer el tutorial <a href="http://freekore.com/hola/mundo-fuente">Hola Mundo</a></p>
 
 
-
 		
 		
 	
-	<a href="#" class="btn btn-primary btn-lg" role="button">Saber
+	<a href="http://freekore.com/" class="btn btn-primary btn-lg" role="button">Saber
 			m&aacute;s &raquo;</a>
 		</p>
 		
