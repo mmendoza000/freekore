@@ -134,6 +134,7 @@ class db_oracle implements db_interface{
 				$this->error_code = $this->arr_handled_errors[$o_err['code']];
 				return FALSE;
 			}else{
+				$this->error_code = $o_err['code'];
 				// if uknown error
 				try{
 					throw new FkException("Oracle Error");
@@ -365,7 +366,7 @@ WHERE table_name='".strtoupper($table)."' ";
 		if($WHERE!=''){
 
 			$SET = ' SET '.$set_fields;
-			echo $sql = 'UPDATE '.$table.' '.$SET.' '.$WHERE.' ';
+			$sql = 'UPDATE '.$table.' '.$SET.' '.$WHERE.' ';
 
 			$rs = $this->query($sql);
 
