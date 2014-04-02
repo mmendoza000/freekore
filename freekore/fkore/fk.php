@@ -279,16 +279,20 @@ function fk_js(){
 
 }
 
-function fk_js_addResource($url){
-	$url = str_replace('app/resources/', '', $url);
-	$url = 'app/resources/'.$url;
+function fk_js_addResource($url,$default_path = true){
+	if($default_path){
+		$url = str_replace('app/resources/', '', $url);
+		$url = 'app/resources/'.$url;
+	}
 	$GLOBALS['FKORE']['js_links'] .= '<script src="'.HTTP.'_HTML/fk_utils/FkResource.php?r='.encode($url).'&t=js" type="text/javascript"></script>
 ';
 }
 
-function fk_css_addResource($url){
-	$url = str_replace('app/resources/', '', $url);
-	$url = 'app/resources/'.$url;
+function fk_css_addResource($url,$default_path = true){
+	if($default_path){
+		$url = str_replace('app/resources/', '', $url);
+		$url = 'app/resources/'.$url;
+	}
 	$GLOBALS['FKORE']['css_links'] .= '<link type="text/css" href="'.HTTP.'_HTML/fk_utils/FkResource.php?r='.encode($url).'&t=css" rel="stylesheet" />
 ';
 }

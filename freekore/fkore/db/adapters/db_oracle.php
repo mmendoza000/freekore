@@ -37,6 +37,8 @@ class db_oracle implements db_interface{
 	private $query_is_assoc = false;
 	public static $is_connected = false;
 
+	private $id_field_name = NULL;
+
 	private $arr_handled_errors = array(
 			'1062'=>'ER_DUP_ENTRY',
 			'1451'=>'ER_ROW_IS_REFERENCED_2',
@@ -207,7 +209,19 @@ class db_oracle implements db_interface{
 	 *@since v0.1 beta
 	 * */
 	public function inserted_id(){
-		return mysql_insert_id();
+		if($this->id_field_name!=NULL){
+			$this->query('SELECT MAX('.$this->id_field_name.') as LAST_ID FROM '.$this->sql_table);
+			if($res= $this->next()){
+				return $res['LAST_ID'];
+			}else{
+				return NULL;
+			}
+			
+		}else{
+			return NULL;
+		}
+		
+		 
 	}
 	/**
 	 *@package db_oracle
@@ -245,10 +259,12 @@ WHERE table_name='".strtoupper($table)."' ";
 			
 		$fields_list = '';
 		$fields_vals = '';
+		$this->id_field_name = $id_field_name;
+		$this->sql_table = $table;
 
 		foreach($array_fields as $f_name=>$f_val){
 
-			if($f_name!=$id_field_name && trim($f_name)!=''){
+			if($f_name!=$this->id_field_name && trim($f_name)!=''){
 
 				$FieldType = isset($form_fields[$f_name]['Type'])?strtolower($form_fields[$f_name]['Type']):'';
 
@@ -284,12 +300,12 @@ WHERE table_name='".strtoupper($table)."' ";
 
 		$primary_fields = '';
 		$primary_vals = '';
-		if($id_field_name!=NULL){
-			$primary_fields = ''.$id_field_name.',';
+		if($this->id_field_name!=NULL){
+			$primary_fields = ''.$this->id_field_name.',';
 			$primary_vals = 'NULL,';
 		}
 
-		$sql = 'INSERT INTO '.$table.' ('.$primary_fields.''.$fields_list.')
+		$sql = 'INSERT INTO '.$this->sql_table.' ('.$primary_fields.''.$fields_list.')
   			   VALUES ('.$primary_vals.''.$fields_vals.')';
 
 
@@ -310,6 +326,7 @@ WHERE table_name='".strtoupper($table)."' ";
 
 
 		$set_fields = '';
+		$this->id_field_name = $id_field_name;
 
 		$WHERE = '';
 
@@ -318,21 +335,21 @@ WHERE table_name='".strtoupper($table)."' ";
 
 		}else{
 
-			if($id_field_name==NULL){
+			if($this->id_field_name==NULL){
 				$form_fields = $this->describe_table($table);
 
-				$id_field_name = isset($this->primary_key_id['Field'])?$this->primary_key_id['Field']:NULL;
+				$this->id_field_name = isset($this->primary_key_id['Field'])?$this->primary_key_id['Field']:NULL;
 			}
 
-			if($id_field_name!=NULL){
-				$WHERE = ' WHERE '.$id_field_name.' = \''.$array_fields[$id_field_name].'\' ';
+			if($this->id_field_name!=NULL){
+				$WHERE = ' WHERE '.$this->id_field_name.' = \''.$array_fields[$this->id_field_name].'\' ';
 			}
 
 		}
 
 
 		foreach($array_fields as $f_name=>$f_val){
-			if($f_name!=$id_field_name){
+			if($f_name!=$this->id_field_name){
 
 				$FieldType = isset($form_fields[$f_name]['Type'])?strtolower($form_fields[$f_name]['Type']):'';
 				if($FieldType=='password'){
