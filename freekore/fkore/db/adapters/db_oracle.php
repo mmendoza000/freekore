@@ -174,7 +174,9 @@ class db_oracle implements db_interface{
 	 *@since v0.1 beta
 	 * */
 	public function num_rows($rs = null){
-		// Definir
+
+		$Resource = ( $rs!=NULL? $rs : $this->resource);
+		return oci_num_rows($Resource);
 
 	}
 	/**
@@ -305,7 +307,7 @@ WHERE table_name='".strtoupper($table)."' ";
 			$primary_vals = 'NULL,';
 		}
 
-		$sql = 'INSERT INTO '.$this->sql_table.' ('.$primary_fields.''.$fields_list.')
+		echo $sql = 'INSERT INTO '.$this->sql_table.' ('.$primary_fields.''.$fields_list.')
   			   VALUES ('.$primary_vals.''.$fields_vals.')';
 
 
