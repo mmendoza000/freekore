@@ -26,6 +26,7 @@ function fk_ajax_exec(xParams){
                           url : HTTP_FILE+xParams.pUrl,   
                         async : false,
 						 data : xParams.pArgs+'&ajax=1',
+						error : function(d){ alert('Se ha perdido la conexion, asegurese de estar conectado a internet'); },
                       success : function(resp) {
                     	  
                     	  setTimeout('$("#loading-message").hide();',500);
@@ -81,6 +82,7 @@ function fk_ajax_json(xParams,submit){
 		  type: "POST",
 		  dataType: 'json',
 		  data: formArgs+'&'+xParams.pArgs+'&ajax=1',
+		  error : function(d){ alert('Se ha perdido la conexion, asegurese de estar conectado a internet'); },
 		  success: function(d){
 			  if(d.js){eval(d.js);}
 		  }

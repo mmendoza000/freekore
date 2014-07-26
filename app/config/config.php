@@ -1,3 +1,4 @@
+;<?php /*
 ;-------------------------------
 ;         APLICACION
 ;-------------------------------
@@ -62,3 +63,7 @@ interactive = Off
 debug = Off
 on_internet = On
 server_os = linux
+
+
+
+; */ ?>

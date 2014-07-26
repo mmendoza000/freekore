@@ -1,4 +1,5 @@
-﻿; Configuracion de ambiente de base de datos
+﻿;<?php /*
+; Configuracion de ambiente de base de datos
 
 [development]
 db_host = localhost
@@ -34,3 +35,5 @@ db_username = MMENDOZA
 db_password = gdit
 db_name = XE
 db_type = oracle
+
+; */ ?>

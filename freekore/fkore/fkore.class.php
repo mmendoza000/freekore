@@ -184,7 +184,7 @@ class fkore {
 				}
 
 			}else{echo '/* File not found:'.$fileName.' */';}
-			
+
 		}
 	}
 	/**
@@ -245,26 +245,35 @@ class fkore {
 		}else{
 			// controler no existe
 			if($GLOBALS['FKORE']['RUNNING']['app']['interactive']==true){
-				// MOSTRAR ERROR Y AYUDA
 
-				$cont_control = str_replace('__ControlerName__',$url_rs['controller'],file_get_contents(SYSTEM_PATH.'freekore/build/templates/controller-layout.tpl'));
+				if(self::dynamic_page($url_rs['file_controller'],$url_rs)==false){
+					// MOSTRAR ERROR Y AYUDA
+					$cont_control = str_replace('__ControlerName__',$url_rs['controller'],file_get_contents(SYSTEM_PATH.'freekore/build/templates/controller-layout.tpl'));
 
-				try{
-					throw new FkException('El Controlador "'.$url_rs['file_controller'].'" no existe');
-				}catch(FkException $e){
-					$e->description='Es requerido el archivo Controllador <b>'.$url_rs['file_controller'].'</b>
+					try{
+						throw new FkException('El Controlador "'.$url_rs['file_controller'].'" no existe');
+					}catch(FkException $e){
+						$e->description='Es requerido el archivo Controllador <b>'.$url_rs['file_controller'].'</b>
 						                    , sin embargo no fue encontrado.';
-					$e->solution='1. Crea la clase <b>'.$url_rs['controller'].'</b> en el archivo
+						$e->solution='1. Crea la clase <b>'.$url_rs['controller'].'</b> en el archivo
 						                    <b>'.$url_rs['file_controller'].'</b> ';						                           $e->solution_code = fk_str_format($cont_control,'html');
-					$e->show('code_help');
+						$e->show('code_help');
+					}
 				}
+
+
 
 			}else{
-				if(file_exists(SYSTEM_PATH.'app/errors/error_404.php')){
-					require(SYSTEM_PATH.'app/errors/error_404.php');
-				}else{
-					require(SYSTEM_PATH.'freekore/sys_messages/page/default_error_404.php');
+
+				if(self::dynamic_page($url_rs['file_controller'],$url_rs)){
+					if(file_exists(SYSTEM_PATH.'app/errors/error_404.php')){
+						require(SYSTEM_PATH.'app/errors/error_404.php');
+					}else{
+						require(SYSTEM_PATH.'freekore/sys_messages/page/default_error_404.php');
+					}
 				}
+
+
 
 			}
 		}
@@ -272,8 +281,8 @@ class fkore {
 	} // End InitializeFK
 	public static function url_processor($url){
 
-		
-		
+
+
 		$file_lst = array();
 
 		if($GLOBALS['FKORE']['config']['APP']['mod_rewrite']){
@@ -489,7 +498,7 @@ class fkore {
 	private static function read_config_file($FILE){
 
 		//
-		$file_cnf = file(SYSTEM_PATH.'app/config/'.$FILE.'.ini');
+		$file_cnf = file(SYSTEM_PATH.'app/config/'.$FILE.'.php');
 		$subsection = false;
 
 		foreach($file_cnf as $k=>$v){
@@ -548,14 +557,14 @@ class fkore {
 	 *@since v0.1
 	 * */
 	public static function createUrlRelative(){
-		
+
 		if(!defined('HTTP')){
 			if($GLOBALS['FKORE']['config']['APP']['mod_rewrite']){
 				$rel_path = $GLOBALS['FKORE']['RUNNING']['app']['www_server'];
 			}else{
 				$rel_path = $GLOBALS['FKORE']['RUNNING']['app']['www_server'].'public/';
 			}
-			
+
 
 			//--------------------
 			// Set HTTP PATH
@@ -563,7 +572,7 @@ class fkore {
 			//Set HTTP variable = www_server
 			define('HTTP',$rel_path);
 		}
-		
+
 	} // createUrlRelative
 
 
@@ -604,5 +613,23 @@ class fkore {
 		$s = str_replace(' ', '', $s);
 		return $s;
 	}
+
+	public static function dynamic_page($page,$url_rs){
+
+		$page = substr($page, 0,-15);
+		// Load dinamic user page
+
+		if(file_exists(SYSTEM_PATH.'app/controllers/DynamicPage.controller.php')){
+			require(SYSTEM_PATH.'app/controllers/DynamicPage.controller.php');
+
+			//EJECUTAR CONTROLLER
+			$dypage = new DynamicPageController($page);
+			return true;
+		}else{
+			return false;
+		}
+
+
+	} // end dynamic_page()
 
 } // End class fkore

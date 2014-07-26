@@ -35,7 +35,7 @@ class AppController {
 	public $PermaLinkVarsText = '';
 
 	private $url_processed = ''; // real url used
-	
+
 	/**
 	 *@package AppController
 	 *@method construct()
@@ -47,7 +47,7 @@ class AppController {
 
 
 		$this->url_processed = isset($url_params['url_processed'])?$url_params['url_processed']:'';
-		
+
 		// Define Objeto load
 		$this->Load = new Load();
 		$this->load = new Load();
@@ -146,7 +146,7 @@ class AppController {
 	 * */
 	public function getCurrentUrl(){
 		/*$get = isset($_GET['url'])?$_GET['url'] : '';
-		return $get;*/
+		 return $get;*/
 		return $this->url_processed;
 	}
 	/**
@@ -162,10 +162,10 @@ class AppController {
 
 		$cur_page=$this->getCurrentPage();
 		$tot_str = strlen($cur_page);
-		
+
 		$url = $this->getCurrentUrl();
-		
-		
+
+
 		$vars = substr($url, $tot_str+1);
 		$rs_vars = explode('/', $vars);
 		$perma_vars = array();
@@ -256,7 +256,7 @@ class AppController {
 		# Keywords de la pagina
 		fk_menu($m_id,$curr);
 	}	// page_KEYWORDS
-	
+
 	/**
 	 *@package AppController
 	 *@method PutContent()
@@ -267,9 +267,17 @@ class AppController {
 	 *@since v0.1 beta
 	 * */
 	public function putContent($Index , $Content ){
-		$this->Load->PutContent($Index , $Content );
+
 		$this->load->PutContent($Index , $Content );
 	}
 
+	public function putArrayContent($array,$prefix=''){
+
+		if($prefix!=''){ $prefix = $prefix.'.';}
+
+		foreach ($array as $k=>$v){
+			$this->load->PutContent('{'.$prefix.$k.'}' , $v );
+		}
+	}
 
 }

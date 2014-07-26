@@ -16,3 +16,11 @@ define('OK_ICON','<span style="float: left; margin-right: 0.3em;"  class="ui-ico
 define('DATE_FORMAT', 'd/m/Y');
 define('JS_DATE_FORMAT', 'dd/mm/yy');
 define('DB_DATE_FORMAT', '%d/%m/%Y');
+
+$GLOBALS['PRIVILEGIOS'] = array(
+	'PUEDE_ATENDENDER_CHAT'=>'Puede atender chat',
+	'PUEDE_ADMINISTRAR'=>'Puede administrar',
+	'PUEDE_ADMINISTRAR_USUARIOS'=>'Puede modificar usuarios'
+);
+
+
