@@ -20,7 +20,8 @@ Freekore es un proyecto en el cual puedes colaborar, si estas interesado en ser 
 </p>
 <p>Gracias por descargar Freekore.</p>
 
-<h1> VIA COMPOSER</h1>
+
+<h1> Instalación: via Composer</h1>
 Create a composer.json whit:
 <pre>
 {
@@ -32,7 +33,7 @@ Create a composer.json whit:
 
 
 
-<h1>Instalación</h1>
+<h1>Instalación manual</h1>
 <ol>
 	<li>Descomprime el paquete en una carpeta vacía.</li>
 	<li>Abre <code>app/config/config.php</code> con un editor de texto   y llena los datos de <b>$GLOBALS['config']['www_server']</b>.</li>
