@@ -2,10 +2,10 @@
 ; Configuracion de ambiente de base de datos
 
 [development]
-db_host = localhost
-db_username = dev_user
-db_password = dev_pass
-db_name = freekore
+db_host = 127.0.0.1
+db_username = root
+db_password = 
+db_name = test
 db_type = mysql
 
 [development_firebird]

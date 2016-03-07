@@ -1,7 +1,7 @@
 <?php
 /**
  * FreeKore Php Framework
- * Version: 0.1 Beta
+ * Version: 1.4.0 
  *
  * @Author     M. Angel Mendoza  email:mmendoza@freekore.com
  * @copyright  Copyright (c) 2010 Freekore PHP Team
@@ -25,7 +25,7 @@ class fkore {
 	 *@var string
 	 *@desc  Freekore Version
 	 * */
-	static $version = '0.4.0';
+	static $version = '1.4.0';
 
 	/**
 	 *@package fkore

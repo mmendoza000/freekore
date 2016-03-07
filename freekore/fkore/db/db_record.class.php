@@ -414,7 +414,7 @@ class db_record {
 		 	if($access==TRUE){
 		 		if($display_as=='view-edit'){
 		 			$html_fld .='1<input id="'.$field_id_html.'" name="'.$field_name_html.'" type="text" value="'.@$this->fields[$field].'" '.@$Class.' '.@$ExtraAttributes.' />';
-		 			$html_fld .='<script language="javascript" type="text/javascript">$(function() {$( "#'.$field_id_html.'" ).datepicker({ dateFormat: "'.JS_DATE_FORMAT.'",showOn: "button",buttonImage: HTTP+"_HTML/img/calendar.gif", buttonImageOnly: true});	});	</script>';
+		 			$html_fld .='<script language="javascript" type="text/javascript">$(function() {$( "#'.$field_id_html.'" ).datetimepicker({ dateFormat: "'.JS_DATE_FORMAT.'",showOn: "button",buttonImage: HTTP+"_HTML/img/calendar.gif", buttonImageOnly: true});	});	</script>';
 		 		}elseif($display_as=='edit'){
 		 			$date_value='';
 		 			//if(trim($this->fields[$field])!=''){$date_value = date(DATE_FORMAT,strtotime($this->fields[$field]));}
@@ -426,7 +426,7 @@ class db_record {
 		 			$html_fld .= fk_date_field($field_id_html, $field_name_html, $date_value,$onclick=null,$cssExtra=$Class,$mode='edit');
 		 			                            
 		 			//$html_fld .='2<input id="'.$field_id_html.'" name="'.$field_name_html.'" type="text" value="'.$date_value.'" '.@$Class.' '.@$ExtraAttributes.' />[<a href="javascript:void(0)" onclick="$(\'#'.$field_id_html.'\').val(\''.date(DATE_FORMAT).'\')">'.__('Hoy').'</a>]';
-		 			//$html_fld .='<script language="javascript" type="text/javascript">$(function(){$( "#'.$field_id_html.'" ).datepicker({ dateFormat: "'.JS_DATE_FORMAT.'",changeMonth: true,changeYear: true});	});	</script>';
+		 			//$html_fld .='<script language="javascript" type="text/javascript">$(function(){$( "#'.$field_id_html.'" ).datetimepicker({ dateFormat: "'.JS_DATE_FORMAT.'",changeMonth: true,changeYear: true});	});	</script>';
 		 		}elseif($display_as=='read-only'){
 		 			$html_fld .= getFormatedDate($this->fields[$field]) .'<input id="'.$field_id_html.'" name="'.$field_name_html.'" type="hidden" value="'.@$this->fields[$field].'" '.$Class.' '.@$ExtraAttributes.' />';
 		 		}
@@ -439,13 +439,13 @@ class db_record {
 		 	if($access==TRUE){
 		 		if($display_as=='view-edit'){
 		 			$html_fld .='<input id="'.$field_id_html.'" name="'.$field_name_html.'" type="text" value="'.@$this->fields[$field].'" '.@$Class.' '.@$ExtraAttributes.' />';
-		 			$html_fld .='<script language="javascript" type="text/javascript">$(function() {$( "#'.$field_id_html.'" ).datepicker({ dateFormat: "'.JS_DATE_FORMAT.'",showOn: "button",buttonImage: HTTP+"_HTML/img/calendar.gif", buttonImageOnly: true});	});	</script>';
+		 			$html_fld .='<script language="javascript" type="text/javascript">$(function() {$( "#'.$field_id_html.'" ).datetimepicker({ dateFormat: "'.JS_DATE_FORMAT.'",showOn: "button",buttonImage: HTTP+"_HTML/img/calendar.gif", buttonImageOnly: true});	});	</script>';
 		 		}elseif($display_as=='edit'){
 		 			$date_value='';
 		 			if(trim($this->fields[$field])!=''){$date_value = date(DATE_FORMAT,strtotime($this->fields[$field]));}
 		 				
 		 			$html_fld .='<input id="'.$field_id_html.'" name="'.$field_name_html.'" type="text" value="'.$date_value.'" '.@$Class.' '.@$ExtraAttributes.' />[<a href="javascript:void(0)" onclick="$(\'#'.$field_id_html.'\').val(\''.date(DATE_FORMAT).'\');$(\'#'.$field_id_html.'\').change();">'.__('Hoy').'</a>]';
-		 			$html_fld .='<script language="javascript" type="text/javascript">$(function(){$( "#'.$field_id_html.'" ).datepicker({ dateFormat: "'.JS_DATE_FORMAT.'",changeMonth: true,changeYear: true});	});	</script>';
+		 			$html_fld .='<script language="javascript" type="text/javascript">$(function(){$( "#'.$field_id_html.'" ).datetimepicker({ dateFormat: "'.JS_DATE_FORMAT.'",changeMonth: true,changeYear: true});	});	</script>';
 		 		}elseif($display_as=='read-only'){
 		 			$html_fld .= getFormatedDate($this->fields[$field]) .'<input id="'.$field_id_html.'" name="'.$field_name_html.'" type="hidden" value="'.@$this->fields[$field].'" '.$Class.' '.@$ExtraAttributes.' />';
 		 		}
