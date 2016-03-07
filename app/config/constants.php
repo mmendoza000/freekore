@@ -1,6 +1,6 @@
 <?php
 #-------------------------
-#  DEFAULT THEME 
+#  DEFAULT THEME ok
 #-------------------------
 
 define('default_theme','defTheme');
