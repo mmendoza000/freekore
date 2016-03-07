@@ -2,7 +2,7 @@
     "name": "mmendoza000/freekore",
     "description": "Freekore PHP Framework",
     "keywords": ["framework", "freekore"],
-    "license": "GNU",
+    "license": "GPLv2",
     "type": "project",
     "version": "1.4.0",
     "require": {
