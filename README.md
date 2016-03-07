@@ -20,15 +20,15 @@ Freekore es un proyecto en el cual puedes colaborar, si estas interesado en ser 
 </p>
 <p>Gracias por descargar Freekore.</p>
 
-=COMPOSER=
+<h1> VIA COMPOSER</h1>
 Create a composer.json whit:
-<p>
+<pre>
 {
     "require": {
         "mmendoza000/freekore": "1.4.*"
     }
 }
-</p>
+</pre>
 
 
 
