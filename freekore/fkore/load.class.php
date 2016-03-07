@@ -223,8 +223,18 @@ Este es el archivo '.$view_file.'
 		}else{
 
 			// Prints result
-			echo  eval('?>' . $view_content . '<?php ');
+			if(app_config_is('utf8_encode', true)){
+				// if is utf8 returns value in utf8
+				echo  utf8_encode(eval('?>' . $view_content . '<?php '));
+			}else{
+				echo  eval('?>' . $view_content . '<?php ');
+			}
 
+		}
+		
+		if(app_config_is('utf8_encode', true)){
+			// if is utf8 returns value in utf8
+			$ViewResult = utf8_encode($ViewResult);	
 		}
 
 		return $ViewResult;

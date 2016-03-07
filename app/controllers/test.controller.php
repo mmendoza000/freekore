@@ -2,8 +2,44 @@
 class TestController extends AppController{
 
 	public function index(){
+
+		fk_header();
+		echo '
+		<ul>
+		<li><a href="'.fk_link('test/calendar').'"> Evato FKCalendar</a></li>
+		<li><a href="'.fk_link('test/calendar').'"> Evato Comments</a></li>
+		<li><a href="'.fk_link('test/calendar').'"> Evato File Uploader</a></li>
+		</ul>
+		';
+		fk_footer();
 			
 	} // End index
+
+	public function calendar() {
+
+		Load::plugin('FkCalendar');
+		Load::freekoreLib('ajax');
+
+		$FkCalendar = new FkCalendar('test/calendar');
+
+		$FkCalendar->addEvent('1','Evento 1',date('Y-m-d'),date('H:i'),date('Y-m-d'),date('H:i',strtotime(date('H:i').' + 30 minutes')));
+		$FkCalendar->addEvent('1','Evento 1',date('Y-m-d'),date('01:00'),date('Y-m-d'),date('H:i',strtotime(date('01:00').' + 60 minutes')));
+
+		fk_header();
+		echo $FkCalendar->render();
+
+		fk_footer();
+
+    
+    } // End comments
+
+    public function ui() {
+
+    	$this->load->view('template/header.php');
+    	$this->load->view('test/ui.php');
+    	$this->load->view('template/footer.php');
+    
+    } // End ui
 
 	public function ws() {
 
@@ -90,6 +126,8 @@ class TestController extends AppController{
 		fk_footer();
 
 	} // End usuarios
+
+
 
 
 

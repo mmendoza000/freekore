@@ -6,7 +6,7 @@ class WebService{
 
 	public function login($user, $password)
 	{
-		return 'hola ws ejecutado '.$user;
+		return 'hola ws ejecutado '.__CLASS__.' -> '.__FUNCTION__.' ';
 	}
 
 

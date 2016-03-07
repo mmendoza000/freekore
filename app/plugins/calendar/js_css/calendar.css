@@ -1,0 +1,73 @@
+/* PLUGIN: calendar*/
+a {
+	color: #DF9496;
+}
+
+.calendar {
+	width: 250px;
+	padding: 0;
+	margin: 0;
+	border-left: 1px solid #A2ADBC;
+	font: normal 12px/20px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #616B76;
+	text-align: center;
+	background-color: #fff;
+}
+
+.nav, .nav a {
+	font: bold 18px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #fff;	
+	text-align: center;
+	text-decoration: none;
+}	
+
+
+caption {
+	margin: 0;
+	padding: 0;
+	width: 250px;
+	background: #A2ADBC;
+	color: #fff;	 
+	font: bold 12px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	text-align: center;
+}
+
+th {
+	font: bold 11px/20px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	color: #616B76;
+	background: #D9E2E1;
+	border-right: 1px solid #A2ADBC;
+	border-bottom: 1px solid #A2ADBC;
+	border-top: 1px solid #A2ADBC;
+}
+
+.today, td.today a, td.today a:link, td.today a:visited {
+	color: #F6F4DA;
+	font-weight: bold;
+	background: #DF9496;
+}
+
+td {
+	border-right: 1px solid #A2ADBC;
+	border-bottom: 1px solid #A2ADBC;
+	width: 25px;
+	height: 20px;
+	text-align: center;
+	background: url(images/bg_calendar.gif) no-repeat right bottom;
+}
+
+td a {
+	text-decoration: none;
+	font-weight: bold;
+	display: block;
+}
+
+td a:link, td a:visited {	
+	color: #608194;
+	background: url(images/bg_calendar.gif) no-repeat;
+}
+
+td a:hover, td a:active {
+	color: #6aa3ae;
+	background: url(images/bg_calendar.gif) no-repeat right top;
+}

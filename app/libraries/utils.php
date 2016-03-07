@@ -14,6 +14,17 @@ function http_uploads(){
 	}
 
 }
+function app_config_is($var,$value){
+	$res = false;
+	if(isset($GLOBALS['FKORE']['config']['APP'][$var])){
+		if($GLOBALS['FKORE']['config']['APP'][$var] == $value){
+			$res=true;
+		}
+	}
+
+	return $res;
+	
+}
 function app_running_is($var,$value){
 
 	$res = false;

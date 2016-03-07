@@ -117,9 +117,9 @@ $(document).ready(function(){
 
 	private function get_tab_day(){
 
-		$fx_d_today = new fk_ajax('submit', 'cal-pnl-1', 'form:fkc-frm-day;url:'.$this->Url.';args:oper='.encode('d_today'));
-		$fx_d_prev = new fk_ajax('submit', 'cal-pnl-1', 'form:fkc-frm-day;url:'.$this->Url.';args:oper='.encode('d_prev'));
-		$fx_d_next = new fk_ajax('submit', 'cal-pnl-1', 'form:fkc-frm-day;url:'.$this->Url.';args:oper='.encode('d_next'));
+		$fx_d_today = new ajax('submit', 'cal-pnl-1', 'form:fkc-frm-day;url:'.$this->Url.';args:oper='.encode('d_today'));
+		$fx_d_prev = new ajax('submit', 'cal-pnl-1', 'form:fkc-frm-day;url:'.$this->Url.';args:oper='.encode('d_prev'));
+		$fx_d_next = new ajax('submit', 'cal-pnl-1', 'form:fkc-frm-day;url:'.$this->Url.';args:oper='.encode('d_next'));
 
 
 		$horas = $this->getHoras();
@@ -214,9 +214,9 @@ $(document).ready(function(){
 
 		}
 
-		$fx_d_today = new fk_ajax('submit', 'cal-pnl-1', 'form:fkc-frm-day;url:'.$this->Url.';args:oper='.encode('d_today'));
-		$fx_d_prev = new fk_ajax('submit', 'cal-pnl-1', 'form:fkc-frm-day;url:'.$this->Url.';args:oper='.encode('d_prev'));
-		$fx_d_next = new fk_ajax('submit', 'cal-pnl-1', 'form:fkc-frm-day;url:'.$this->Url.';args:oper='.encode('d_next'));
+		$fx_d_today = new ajax('submit', 'cal-pnl-1', 'form:fkc-frm-day;url:'.$this->Url.';args:oper='.encode('d_today'));
+		$fx_d_prev = new ajax('submit', 'cal-pnl-1', 'form:fkc-frm-day;url:'.$this->Url.';args:oper='.encode('d_prev'));
+		$fx_d_next = new ajax('submit', 'cal-pnl-1', 'form:fkc-frm-day;url:'.$this->Url.';args:oper='.encode('d_next'));
 
 
 		$html .= '<div class="agenda-view">';

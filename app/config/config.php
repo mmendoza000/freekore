@@ -11,6 +11,7 @@ app_activated = development_app_mysql
 mod_rewrite = On
 db_pwd_encripted = Off
 default_language = es
+utf8_encode = On
 
 
 ;-------------------------------------------------

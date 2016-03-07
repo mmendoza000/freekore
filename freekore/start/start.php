@@ -66,7 +66,7 @@ if(!defined('SYSTEM_PATH')){
 	
 
 	//DEFINED VARS
-	require(SYSTEM_PATH.'app/config/defined/default.php');
+	require(SYSTEM_PATH.'app/config/constants.php');
 
 
 	//load the app configuration

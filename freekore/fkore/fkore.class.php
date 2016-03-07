@@ -25,7 +25,7 @@ class fkore {
 	 *@var string
 	 *@desc  Freekore Version
 	 * */
-	static $version = '0.3.4';
+	static $version = '0.4.0';
 
 	/**
 	 *@package fkore

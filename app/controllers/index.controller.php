@@ -3,9 +3,6 @@ class IndexController extends AppController{
 
 	public function index(){
 		
-		
-	
-		
 			
 		# Tittle pagina
 		$this->page_title(' Freekore App');

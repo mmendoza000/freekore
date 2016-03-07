@@ -279,5 +279,18 @@ class AppController {
 			$this->load->PutContent('{'.$prefix.$k.'}' , $v );
 		}
 	}
+	
+	/**
+	 *@package AppController
+	 *@method urlSegment($position);
+	 *@desc returns the url parameter of position:   
+	 *@example  example: whith http://my-app.com/controller/method/pos1/pos2/pos3/
+	 *          urlSegment(0) returns pos1
+	 *@since v4.0 
+	 * */
+	public function urlSegment($position){
+		
+		return (isset($this->PermaLinkVars[$position])? $this->PermaLinkVars[$position]:'');
+	}
 
 }
