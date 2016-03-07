@@ -4,9 +4,8 @@
     "keywords": ["framework", "freekore"],
     "license": "GNU",
     "type": "project",
-    "version": "1.4.0"
+    "version": "1.4.0",
     "require": {
-        "php": ">=5.5.9",
-        "freekore/framework": "1.4.0"
+        "php": ">=5.5.9"
     }
 }
