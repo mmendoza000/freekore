@@ -5,6 +5,7 @@
     "license": "GPLv2",
     "type": "project",
     "version": "1.4.0",
+    "prefer-stable": true,
     "require": {
         "php": ">=5.5.9"
     }
